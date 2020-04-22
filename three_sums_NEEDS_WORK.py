@@ -11,13 +11,16 @@ def three_sums(nums):
         for i, num1 in enumerate(nums):
             for j, num2 in enumerate(nums[i+1:-1]):
                 remaining_number = -(num1 + num2)
+                # check if we can find the missing number
                 if remaining_number not in set(nums[i+j+2:]):
                     continue
 
                 s = sorted([num1, num2, remaining_number])
+                # already have this combination, tod
                 if s[2] in found_sets.get(s[0], {}).get(s[1], {}):
                     continue
                 else:
+                    # store look up of these 3 digits, should clean this up
                     found_sets.setdefault(s[0], {})
                     found_sets[s[0]].setdefault(s[1], set())
                     found_sets[s[0]][s[1]].add(s[2])
