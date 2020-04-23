@@ -12,14 +12,17 @@ def trapped_rain_water(height):
         i = 1
 
         while i < len(height)-1:
-            prev = height[i-1]
+            prev = 
             curr = height[i]
             nxt = height[i+1]
             
-            if prev <= curr:
+            if height[i-1] <= curr:
                 i += 1
                 continue
             
+            # the slow bit that can be sped up
+            # todo: cache heights in future,
+            # we should be able to keep a log of checked indexes
             for h2 in height[i+1:]:
                 if h2 > curr:
                     break
